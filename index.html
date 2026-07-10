@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ACT Tutoring | Suhani Gagrani | Gen Z Theme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,500;10..48,700;10..48,800&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --bg-1: #0b0722;
+            --bg-2: #140d38;
+            --bg-3: #211058;
+            --text: #f6f2ff;
+            --text-soft: #d7cff7;
+            --lime: #d9ff70;
+            --cyan: #5cf7ff;
+            --pink: #ff5ea8;
+            --orange: #ff9a3c;
+            --card: rgba(255, 255, 255, 0.08);
+            --border: rgba(255, 255, 255, 0.22);
+            --shadow: 0 16px 45px rgba(0, 0, 0, 0.42);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+            font-family: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 10% 12%, rgba(255, 94, 168, 0.28), transparent 32%),
+                radial-gradient(circle at 88% 8%, rgba(92, 247, 255, 0.22), transparent 30%),
+                radial-gradient(circle at 22% 84%, rgba(217, 255, 112, 0.14), transparent 36%),
+                linear-gradient(135deg, var(--bg-1), var(--bg-2) 46%, var(--bg-3));
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: -40vmax;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+            background-size: 42px 42px;
+            transform: perspective(420px) rotateX(60deg) translateY(26%);
+            transform-origin: center;
+            opacity: 0.23;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        .blob {
+            position: fixed;
+            pointer-events: none;
+            border-radius: 50%;
+            filter: blur(34px);
+            z-index: -1;
+            mix-blend-mode: screen;
+            animation: drift 12s ease-in-out infinite alternate;
+        }
+
+        .blob.one {
+            width: 240px;
+            height: 240px;
+            top: 8%;
+            right: -70px;
+            background: rgba(255, 94, 168, 0.4);
+        }
+
+        .blob.two {
+            width: 300px;
+            height: 300px;
+            bottom: -90px;
+            left: -80px;
+            background: rgba(92, 247, 255, 0.28);
+            animation-duration: 14s;
+        }
+
+        .page {
+            width: min(1080px, 92vw);
+            margin: 0 auto;
+            padding: 34px 0 64px;
+        }
+
+        .hero {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            padding: clamp(20px, 3vw, 34px);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(7px);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: auto -20% -60% auto;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(217, 255, 112, 0.25), transparent 68%);
+        }
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(217, 255, 112, 0.44);
+            background: rgba(217, 255, 112, 0.12);
+            border-radius: 999px;
+            padding: 8px 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-size: 0.79rem;
+            color: var(--lime);
+        }
+
+        .kicker::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--lime);
+            box-shadow: 0 0 0 5px rgba(217, 255, 112, 0.24);
+        }
+
+        h1 {
+            margin: 18px 0 12px;
+            font-family: "Syne", "Bricolage Grotesque", sans-serif;
+            font-size: clamp(2rem, 7.5vw, 4.6rem);
+            line-height: 0.94;
+            letter-spacing: -0.02em;
+            max-width: 14ch;
+        }
+
+        .subtitle {
+            margin: 0;
+            color: var(--text-soft);
+            max-width: 56ch;
+            line-height: 1.55;
+            font-size: 1.02rem;
+        }
+
+        .score-row {
+            margin-top: 22px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .score {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 14px 14px;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            transform: translateY(14px);
+            opacity: 0;
+            animation: rise 600ms ease forwards;
+        }
+
+        .score:nth-child(2) {
+            animation-delay: 120ms;
+        }
+
+        .score strong {
+            font-family: "Syne", sans-serif;
+            font-size: 1.9rem;
+            color: var(--cyan);
+            line-height: 1;
+        }
+
+        .score span {
+            color: var(--text-soft);
+            font-size: 0.95rem;
+        }
+
+        .cards {
+            margin-top: 18px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .card {
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            background: linear-gradient(150deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+            box-shadow: 0 12px 30px rgba(3, 2, 15, 0.4);
+            padding: 16px;
+            min-height: 168px;
+        }
+
+        .card h2 {
+            margin: 0 0 10px;
+            font-family: "Syne", sans-serif;
+            font-size: 1.18rem;
+            color: #ffffff;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--text-soft);
+            line-height: 1.48;
+        }
+
+        .placeholder {
+            margin-top: 9px;
+            font-weight: 800;
+            color: var(--orange);
+            text-shadow: 0 0 16px rgba(255, 154, 60, 0.3);
+            word-break: break-word;
+        }
+
+        .cta {
+            margin-top: 18px;
+            border-radius: 18px;
+            border: 1px solid rgba(92, 247, 255, 0.4);
+            background: linear-gradient(95deg, rgba(92, 247, 255, 0.14), rgba(255, 94, 168, 0.16));
+            padding: 16px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        footer {
+            margin-top: 18px;
+            color: var(--text-soft);
+            text-align: center;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+        }
+
+        @keyframes rise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes drift {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(24px, -20px) scale(1.08);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .score-row {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                max-width: 17ch;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="blob one" aria-hidden="true"></div>
+    <div class="blob two" aria-hidden="true"></div>
+
+    <main class="page">
+        <section class="hero">
+            <span class="kicker">ACT Tutoring by Suhani Gagrani</span>
+            <h1>Get Your Dream ACT Score, No Fluff.</h1>
+            <p class="subtitle">
+                I am Suhani Gagrani. I scored a perfect 36 on the ACT and 800 in SAT Math, and I help students level up
+                fast with smart strategy, timed drills, and personalized coaching.
+            </p>
+
+            <div class="score-row" aria-label="Score highlights">
+                <div class="score">
+                    <strong>36</strong>
+                    <span>Perfect ACT Composite</span>
+                </div>
+                <div class="score">
+                    <strong>800</strong>
+                    <span>Perfect SAT Math</span>
+                </div>
+            </div>
+
+            <section class="cards" aria-label="Tutoring details">
+                <article class="card">
+                    <h2>What You Get</h2>
+                    <p>
+                        Targeted prep, efficient pacing, and real test tactics that make every session count.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <h2>Hourly Rate</h2>
+                    <p>Private sessions are offered at:</p>
+                    <p class="placeholder">[Hourly Price Placeholder]</p>
+                </article>
+
+                <article class="card">
+                    <h2>Contact</h2>
+                    <p>Message me to book a session or ask questions:</p>
+                    <p class="placeholder">[Contact Info Placeholder]</p>
+                </article>
+            </section>
+
+            <section class="cta" aria-label="Call to action">
+                Start with a focused game plan and build confidence before test day.
+            </section>
+        </section>
+
+        <footer>
+            ACT Tutoring by Suhani Gagrani
+        </footer>
+    </main>
+</body>
+
+</html>
