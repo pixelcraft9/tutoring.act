@@ -298,18 +298,24 @@
     }
 
     .profile-circle {
-      width: 130px;
-      height: 130px;
-      border-radius: 999px;
-      background: var(--navy);
-      color: var(--white);
-      display: grid;
-      place-items: center;
-      font-size: 3rem;
-      font-weight: 900;
-      border: 10px solid var(--orange);
-      margin-bottom: 22px;
-    }
+  width: 150px;
+  height: 150px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 10px solid var(--orange);
+  margin-bottom: 22px;
+  box-shadow: 0 14px 30px rgba(7, 19, 63, 0.18);
+  background: var(--navy);
+}
+
+.profile-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+    
 
     .hero-card h2 {
       color: var(--navy);
@@ -712,9 +718,8 @@
       }
 
       .profile-circle {
-        width: 105px;
-        height: 105px;
-        font-size: 2.35rem;
+      width: 120px;
+      height: 120px;
       }
     }
   </style>
@@ -784,7 +789,9 @@
 
           <aside class="hero-card" aria-label="Tutoring benefits">
             <div class="hero-card-inner">
-              <div class="profile-circle">SG</div>
+              <div class="profile-circle">
+                <img src="profpfp.img" alt="Portrait of Suhani Gagrani" />
+              </div>
               <h2>A clearer way to prep.</h2>
               <p>
                 Students often practice for hours without knowing what they actually need to fix.
