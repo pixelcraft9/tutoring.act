@@ -1,336 +1,1054 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ACT Tutoring | Suhani Gagrani</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,500;10..48,700;10..48,800&family=Syne:wght@700;800&display=swap"
-        rel="stylesheet" />
-    <style>
-        :root {
-            --bg-1: #0b0722;
-            --bg-2: #140d38;
-            --bg-3: #211058;
-            --text: #f6f2ff;
-            --text-soft: #d7cff7;
-            --lime: #d9ff70;
-            --cyan: #5cf7ff;
-            --pink: #ff5ea8;
-            --orange: #ff9a3c;
-            --card: rgba(255, 255, 255, 0.08);
-            --border: rgba(255, 255, 255, 0.22);
-            --shadow: 0 16px 45px rgba(0, 0, 0, 0.42);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suhani Gagrani | ACT & SAT Tutoring</title>
+  <meta
+    name="description"
+    content="ACT, SAT, and PSAT tutoring from Suhani Gagrani. Pattern-based test prep, private coaching, small groups, and intensive review."
+  />
 
-        * {
-            box-sizing: border-box;
-        }
+  <style>
+    :root {
+      --navy: #07133f;
+      --orange: #ff8a00;
+      --blue: #0047d9;
+      --cream: #fff8ef;
+      --white: #ffffff;
+      --text: #172033;
+      --muted: #5d6475;
+      --soft-orange: #fff0dc;
+      --soft-blue: #eef4ff;
+      --border: rgba(7, 19, 63, 0.12);
+      --shadow: 0 18px 45px rgba(7, 19, 63, 0.10);
+      --radius: 28px;
+    }
 
-        html,
-        body {
-            margin: 0;
-            min-height: 100%;
-            font-family: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
-            color: var(--text);
-            background:
-                radial-gradient(circle at 10% 12%, rgba(255, 94, 168, 0.28), transparent 32%),
-                radial-gradient(circle at 88% 8%, rgba(92, 247, 255, 0.22), transparent 30%),
-                radial-gradient(circle at 22% 84%, rgba(217, 255, 112, 0.14), transparent 36%),
-                linear-gradient(135deg, var(--bg-1), var(--bg-2) 46%, var(--bg-3));
-            overflow-x: hidden;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        body::before {
-            content: "";
-            position: fixed;
-            inset: -40vmax;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
-            background-size: 42px 42px;
-            transform: perspective(420px) rotateX(60deg) translateY(26%);
-            transform-origin: center;
-            opacity: 0.23;
-            pointer-events: none;
-            z-index: -2;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .blob {
-            position: fixed;
-            pointer-events: none;
-            border-radius: 50%;
-            filter: blur(34px);
-            z-index: -1;
-            mix-blend-mode: screen;
-            animation: drift 12s ease-in-out infinite alternate;
-        }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-        .blob.one {
-            width: 240px;
-            height: 240px;
-            top: 8%;
-            right: -70px;
-            background: rgba(255, 94, 168, 0.4);
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        .blob.two {
-            width: 300px;
-            height: 300px;
-            bottom: -90px;
-            left: -80px;
-            background: rgba(92, 247, 255, 0.28);
-            animation-duration: 14s;
-        }
+    .page {
+      overflow: hidden;
+    }
 
-        .page {
-            width: min(1080px, 92vw);
-            margin: 0 auto;
-            padding: 34px 0 64px;
-        }
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
 
-        .hero {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            box-shadow: var(--shadow);
-            padding: clamp(20px, 3vw, 34px);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(7px);
-        }
+    .top-bar {
+      padding: 22px 0;
+    }
 
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: auto -20% -60% auto;
-            width: 320px;
-            height: 320px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(217, 255, 112, 0.25), transparent 68%);
-        }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
 
-        .kicker {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            border: 1px solid rgba(217, 255, 112, 0.44);
-            background: rgba(217, 255, 112, 0.12);
-            border-radius: 999px;
-            padding: 8px 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            font-size: 0.79rem;
-            color: var(--lime);
-        }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+    }
 
-        .kicker::before {
-            content: "";
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--lime);
-            box-shadow: 0 0 0 5px rgba(217, 255, 112, 0.24);
-        }
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: var(--orange);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(255, 138, 0, 0.25);
+    }
 
-        h1 {
-            margin: 18px 0 12px;
-            font-family: "Syne", "Bricolage Grotesque", sans-serif;
-            font-size: clamp(2rem, 7.5vw, 4.6rem);
-            line-height: 0.94;
-            letter-spacing: -0.02em;
-            max-width: 14ch;
-        }
+    .brand-small {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-top: -2px;
+    }
 
-        .subtitle {
-            margin: 0;
-            color: var(--text-soft);
-            max-width: 56ch;
-            line-height: 1.55;
-            font-size: 1.02rem;
-        }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
 
-        .score-row {
-            margin-top: 22px;
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 12px;
-        }
+    .nav-links a {
+      opacity: 0.88;
+    }
 
-        .score {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 14px 14px;
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-            transform: translateY(14px);
-            opacity: 0;
-            animation: rise 600ms ease forwards;
-        }
+    .nav-links a:hover {
+      opacity: 1;
+      color: var(--orange);
+    }
 
-        .score:nth-child(2) {
-            animation-delay: 120ms;
-        }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      font-size: 0.98rem;
+    }
 
-        .score strong {
-            font-family: "Syne", sans-serif;
-            font-size: 1.9rem;
-            color: var(--cyan);
-            line-height: 1;
-        }
+    .button:hover {
+      transform: translateY(-2px);
+    }
 
-        .score span {
-            color: var(--text-soft);
-            font-size: 0.95rem;
-        }
+    .button-primary {
+      background: var(--orange);
+      color: var(--white);
+      box-shadow: 0 12px 28px rgba(255, 138, 0, 0.26);
+    }
 
-        .cards {
-            margin-top: 18px;
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 14px;
-        }
+    .button-primary:hover {
+      background: #f07f00;
+    }
 
-        .card {
-            border-radius: 18px;
-            border: 1px solid var(--border);
-            background: linear-gradient(150deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
-            box-shadow: 0 12px 30px rgba(3, 2, 15, 0.4);
-            padding: 16px;
-            min-height: 168px;
-        }
+    .button-secondary {
+      background: var(--white);
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
 
-        .card h2 {
-            margin: 0 0 10px;
-            font-family: "Syne", sans-serif;
-            font-size: 1.18rem;
-            color: #ffffff;
-        }
+    .button-secondary:hover {
+      box-shadow: var(--shadow);
+    }
 
-        .card p {
-            margin: 0;
-            color: var(--text-soft);
-            line-height: 1.48;
-        }
+    .hero {
+      position: relative;
+      padding: 52px 0 72px;
+    }
 
-        .placeholder {
-            margin-top: 9px;
-            font-weight: 800;
-            color: var(--orange);
-            text-shadow: 0 0 16px rgba(255, 154, 60, 0.3);
-            word-break: break-word;
-        }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      border-radius: 999px;
+      background: rgba(255, 138, 0, 0.13);
+      right: -190px;
+      top: -170px;
+      z-index: -1;
+    }
 
-        .cta {
-            margin-top: 18px;
-            border-radius: 18px;
-            border: 1px solid rgba(92, 247, 255, 0.4);
-            background: linear-gradient(95deg, rgba(92, 247, 255, 0.14), rgba(255, 94, 168, 0.16));
-            padding: 16px;
-            font-weight: 600;
-            color: #ffffff;
-        }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 999px;
+      background: rgba(0, 71, 217, 0.10);
+      left: -220px;
+      bottom: -200px;
+      z-index: -1;
+    }
 
-        footer {
-            margin-top: 18px;
-            color: var(--text-soft);
-            text-align: center;
-            font-size: 0.9rem;
-            letter-spacing: 0.02em;
-        }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      align-items: center;
+      gap: 48px;
+    }
 
-        @keyframes rise {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 0.9rem;
+      box-shadow: 0 8px 20px rgba(7, 19, 63, 0.06);
+      margin-bottom: 22px;
+    }
 
-        @keyframes drift {
-            from {
-                transform: translate(0, 0) scale(1);
-            }
+    h1 {
+      color: var(--navy);
+      font-size: clamp(3.2rem, 8vw, 6.6rem);
+      line-height: 0.92;
+      letter-spacing: -0.06em;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
 
-            to {
-                transform: translate(24px, -20px) scale(1.08);
-            }
-        }
+    .subheadline {
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      line-height: 1.15;
+      color: var(--navy);
+      font-weight: 900;
+      max-width: 680px;
+      margin-bottom: 18px;
+    }
 
-        @media (max-width: 900px) {
-            .cards {
-                grid-template-columns: 1fr;
-            }
+    .intro {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 26px;
+    }
 
-            .score-row {
-                grid-template-columns: 1fr;
-            }
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
 
-            h1 {
-                max-width: 17ch;
-            }
-        }
-    </style>
+    .badge {
+      border-radius: 999px;
+      padding: 10px 15px;
+      font-weight: 900;
+      font-size: 0.96rem;
+    }
+
+    .badge-navy {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .badge-orange {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    .badge-light {
+      background: var(--white);
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .quick-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.98rem;
+    }
+
+    .hero-card {
+      background: var(--white);
+      border-radius: 36px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 2px dashed rgba(255, 138, 0, 0.25);
+      border-radius: 28px;
+      pointer-events: none;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 999px;
+      background: var(--navy);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      font-size: 3rem;
+      font-weight: 900;
+      border: 10px solid var(--orange);
+      margin-bottom: 22px;
+    }
+
+    .hero-card h2 {
+      color: var(--navy);
+      font-size: 2rem;
+      line-height: 1.08;
+      margin-bottom: 14px;
+    }
+
+    .hero-card p {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: var(--cream);
+      padding: 13px 14px;
+      border-radius: 18px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .check {
+      color: var(--orange);
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+
+    section {
+      padding: 54px 0;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 26px;
+    }
+
+    .section-kicker {
+      color: var(--orange);
+      font-size: 0.86rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 10px 26px rgba(7, 19, 63, 0.06);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: var(--soft-orange);
+      color: var(--orange);
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      color: var(--navy);
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .subjects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .subject-card {
+      padding: 30px;
+    }
+
+    .subject-card h3 {
+      font-size: 1.55rem;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .clean-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .clean-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+    }
+
+    .clean-list li::before {
+      content: "✓";
+      color: var(--orange);
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+
+    .best-fit {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 38px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .best-fit::after {
+      content: "";
+      position: absolute;
+      width: 330px;
+      height: 330px;
+      right: -150px;
+      bottom: -180px;
+      background: rgba(255, 138, 0, 0.24);
+      border-radius: 999px;
+    }
+
+    .best-fit h2,
+    .best-fit p {
+      color: var(--white);
+    }
+
+    .best-fit .section-kicker {
+      color: #ffc56f;
+    }
+
+    .best-list {
+      display: grid;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .best-list li {
+      background: rgba(255, 255, 255, 0.11);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 18px;
+      padding: 13px 15px;
+      color: rgba(255, 255, 255, 0.92);
+      font-weight: 800;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .price-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .price-card.featured {
+      background: var(--soft-orange);
+      border-color: rgba(255, 138, 0, 0.35);
+    }
+
+    .price-label {
+      display: inline-flex;
+      width: fit-content;
+      border-radius: 999px;
+      background: var(--orange);
+      color: var(--white);
+      padding: 6px 11px;
+      font-weight: 900;
+      font-size: 0.78rem;
+      margin-bottom: 12px;
+    }
+
+    .price-card h3 {
+      color: var(--navy);
+      font-size: 1.22rem;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .price {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 20px;
+      padding: 16px;
+      font-size: 1.35rem;
+      font-weight: 900;
+      line-height: 1.25;
+      margin: 14px 0;
+    }
+
+    .price small {
+      display: block;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.86rem;
+      margin-top: 4px;
+    }
+
+    .price-card .clean-list {
+      margin-top: 4px;
+    }
+
+    .session-timeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .step {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 10px 26px rgba(7, 19, 63, 0.06);
+    }
+
+    .step-number {
+      width: 38px;
+      height: 38px;
+      background: var(--orange);
+      color: var(--white);
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .step h3 {
+      color: var(--navy);
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+
+    .consult {
+      background: var(--white);
+      border-radius: 42px;
+      padding: 42px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .contact-card {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 30px;
+      padding: 24px;
+    }
+
+    .contact-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 700;
+    }
+
+    footer {
+      background: var(--navy);
+      color: var(--white);
+      padding: 34px 0;
+      margin-top: 40px;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-grid p {
+      color: rgba(255, 255, 255, 0.72);
+      margin-top: 4px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-weight: 800;
+    }
+
+    .footer-links a:hover {
+      color: var(--orange);
+    }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid,
+      .best-fit,
+      .consult {
+        grid-template-columns: 1fr;
+      }
+
+      .method-grid,
+      .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .session-timeline {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 16vw, 4.6rem);
+      }
+
+      .subjects-grid,
+      .method-grid,
+      .pricing-grid,
+      .session-timeline {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card,
+      .consult,
+      .best-fit {
+        border-radius: 28px;
+        padding: 24px;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .quick-contact {
+        display: grid;
+      }
+
+      .profile-circle {
+        width: 105px;
+        height: 105px;
+        font-size: 2.35rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="blob one" aria-hidden="true"></div>
-    <div class="blob two" aria-hidden="true"></div>
+  <div class="page">
+    <header class="top-bar">
+      <div class="container nav">
+        <a class="brand" href="#top" aria-label="Suhani Gagrani tutoring home">
+          <span class="brand-mark">SG</span>
+          <span>
+            Suhani Gagrani
+            <span class="brand-small">ACT, SAT & PSAT Tutoring</span>
+          </span>
+        </a>
 
-    <main class="page">
-        <section class="hero">
-            <span class="kicker">ACT Tutoring by Suhani Gagrani</span>
-            <h1>Get Your Dream ACT Score, No Fluff.</h1>
-            <p class="subtitle">
-                I am Suhani Gagrani. I scored a perfect 36 on the ACT and 800 in SAT Math, and I help students level up
-                fast with smart strategy, timed drills, and personalized coaching.
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#method">Method</a>
+          <a href="#subjects">Subjects</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#consult">Contact</a>
+        </nav>
+
+        <a class="button button-primary" href="https://cal.com/suhani-gagrani-vmllz4" target="_blank" rel="noreferrer">
+          Book a Consultation →
+        </a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">⭐ Pattern-based tutoring that feels clear</div>
+
+            <h1>ACT & SAT Tutoring</h1>
+
+            <p class="subheadline">Learn the patterns behind the test — not just the content.</p>
+
+            <p class="intro">
+              One-on-one and small-group tutoring for high school students preparing for the ACT, SAT, or PSAT.
+              My approach focuses on identifying why students miss questions, organizing mistakes by question type,
+              and building targeted practice around those patterns.
             </p>
 
-            <div class="score-row" aria-label="Score highlights">
-                <div class="score">
-                    <strong>36</strong>
-                    <span>Perfect ACT Composite</span>
-                </div>
-                <div class="score">
-                    <strong>800</strong>
-                    <span>Perfect SAT Math</span>
-                </div>
+            <div class="badges">
+              <span class="badge badge-navy">36 ACT</span>
+              <span class="badge badge-orange">800 SAT Math</span>
+              <span class="badge badge-light">Online tutoring available</span>
             </div>
 
-            <section class="cards" aria-label="Tutoring details">
-                <article class="card">
-                    <h2>What You Get</h2>
-                    <p>
-                        Targeted prep, efficient pacing, and real test tactics that make every session count.
-                    </p>
-                </article>
+            <div class="hero-actions">
+              <a class="button button-primary" href="https://cal.com/suhani-gagrani-vmllz4" target="_blank" rel="noreferrer">
+                Book a Free Consultation →
+              </a>
+              <a class="button button-secondary" href="mailto:suhanigagrani1@gmail.com">
+                Email Me
+              </a>
+            </div>
 
-                <article class="card">
-                    <h2>Hourly Rate</h2>
-                    <p>Private sessions are offered at:</p>
-                    <p class="placeholder">[Hourly Price Placeholder]</p>
-                </article>
+            <div class="quick-contact">
+              <a href="tel:7372961348">📞 Text or call: 737-296-1348</a>
+              <a href="mailto:suhanigagrani1@gmail.com">✉️ suhanigagrani1@gmail.com</a>
+            </div>
+          </div>
 
-                <article class="card">
-                    <h2>Contact</h2>
-                    <p>Message me to book a session or ask questions:</p>
-                    <p class="placeholder">[Contact Info Placeholder]</p>
-                </article>
-            </section>
+          <aside class="hero-card" aria-label="Tutoring benefits">
+            <div class="hero-card-inner">
+              <div class="profile-circle">SG</div>
+              <h2>A clearer way to prep.</h2>
+              <p>
+                Students often practice for hours without knowing what they actually need to fix.
+                I help turn mistakes into a specific study plan.
+              </p>
 
-            <section class="cta" aria-label="Call to action">
-                Start with a focused game plan and build confidence before test day.
-            </section>
-        </section>
+              <div class="mini-list">
+                <div class="mini-item"><span class="check">✓</span> Targeted lessons by question type</div>
+                <div class="mini-item"><span class="check">✓</span> Mistake review that shows the real pattern</div>
+                <div class="mini-item"><span class="check">✓</span> Short homework matched to weak spots</div>
+                <div class="mini-item"><span class="check">✓</span> Flexible private or group options</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
 
-        <footer>
-            ACT Tutoring by Suhani Gagrani
-        </footer>
+      <section id="method">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-kicker">My Teaching Method</p>
+            <h2>A more targeted way to study.</h2>
+            <p>
+              Many students practice for hours without knowing what they actually need to fix.
+              My tutoring breaks the test into specific question types and mistake patterns so studying becomes more focused and less overwhelming.
+            </p>
+          </div>
+
+          <div class="method-grid">
+            <article class="card">
+              <div class="card-icon">🎯</div>
+              <h3>Diagnose the pattern</h3>
+              <p>We identify whether each missed question came from timing, content, careless work, or a test trap.</p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon">🧩</div>
+              <h3>Name the question type</h3>
+              <p>Instead of treating the test as one big subject, we group questions by type: inference, evidence, transitions, functions, word problems, punctuation, and more.</p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon">✏️</div>
+              <h3>Teach the exact move</h3>
+              <p>Each question type gets a repeatable process, not vague advice like “read more carefully” or “slow down.”</p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon">⏱️</div>
+              <h3>Drill deliberately</h3>
+              <p>Short, targeted practice sets help students build the specific skill they are missing instead of doing random practice.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="subjects">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-kicker">Subjects Offered</p>
+            <h2>Support for ACT, SAT, and PSAT prep.</h2>
+          </div>
+
+          <div class="subjects-grid">
+            <article class="card subject-card">
+              <h3>ACT Tutoring</h3>
+              <ul class="clean-list">
+                <li>English</li>
+                <li>Math</li>
+                <li>Reading</li>
+                <li>Science</li>
+                <li>Timing and pacing strategies</li>
+                <li>Practice test review</li>
+              </ul>
+            </article>
+
+            <article class="card subject-card">
+              <h3>SAT / PSAT Tutoring</h3>
+              <ul class="clean-list">
+                <li>Reading & Writing</li>
+                <li>Math</li>
+                <li>Grammar and comprehension</li>
+                <li>Question-type recognition</li>
+                <li>Trap answer strategies</li>
+                <li>Digital SAT pacing</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="best-fit">
+            <div>
+              <p class="section-kicker">Best For Students Who</p>
+              <h2>Need structure, feedback, and a clearer plan.</h2>
+              <p>
+                This is a good fit for students who are practicing but not seeing the score move,
+                or who want someone to help translate mistakes into a focused next step.
+              </p>
+            </div>
+
+            <ul class="best-list">
+              <li>Feel stuck at the same score</li>
+              <li>Practice often but don’t know what to fix</li>
+              <li>Spend too much time on difficult questions</li>
+              <li>Get tricked by close answer choices</li>
+              <li>Want structure, accountability, and a clearer study plan</li>
+              <li>Need help turning mistakes into a strategy</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-kicker">Pricing</p>
+            <h2>Private, group, intensive, and final review options.</h2>
+            <p>
+              Choose the format that fits your schedule, goals, and test timeline.
+            </p>
+          </div>
+
+          <div class="pricing-grid">
+            <article class="card price-card featured">
+              <span class="price-label">Private Coaching</span>
+              <h3>Private ACT/SAT/PSAT Coaching</h3>
+              <div class="price">$30/hour</div>
+              <ul class="clean-list">
+                <li>Personalized instruction</li>
+                <li>Weekly homework</li>
+                <li>Flexible scheduling</li>
+                <li>Targeted mistake review</li>
+              </ul>
+            </article>
+
+            <article class="card price-card">
+              <span class="price-label">Small Group</span>
+              <h3>Small Group Coaching</h3>
+              <div class="price">
+                2 students: $20/hr
+                <small>3+ students: $15/hr per student</small>
+              </div>
+              <ul class="clean-list">
+                <li>Group strategy lessons</li>
+                <li>Targeted practice</li>
+                <li>Accountability</li>
+                <li>Great for friends, classmates, or siblings</li>
+              </ul>
+            </article>
+
+            <article class="card price-card">
+              <span class="price-label">Intensive</span>
+              <h3>Four-Week ACT/SAT/PSAT Intensive</h3>
+              <div class="price">$99 <small>introductory pricing</small></div>
+              <ul class="clean-list">
+                <li>3 hours every Saturday</li>
+                <li>Small groups of 6–8 students</li>
+                <li>Practice plan</li>
+                <li>Office hours</li>
+              </ul>
+            </article>
+
+            <article class="card price-card">
+              <span class="price-label">Bootcamp</span>
+              <h3>ACT/SAT/PSAT Final Review Bootcamp</h3>
+              <div class="price">Chat with me <small>if interested</small></div>
+              <ul class="clean-list">
+                <li>One-day 6-hour review</li>
+                <li>Timing strategies</li>
+                <li>Common mistakes</li>
+                <li>Final Q&A</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-kicker">What a Session Looks Like</p>
+            <h2>Every session has a clear purpose.</h2>
+          </div>
+
+          <div class="session-timeline">
+            <article class="step">
+              <div class="step-number">1</div>
+              <h3>Review recent practice</h3>
+            </article>
+
+            <article class="step">
+              <div class="step-number">2</div>
+              <h3>Identify the mistake pattern</h3>
+            </article>
+
+            <article class="step">
+              <div class="step-number">3</div>
+              <h3>Teach the strategy for that question type</h3>
+            </article>
+
+            <article class="step">
+              <div class="step-number">4</div>
+              <h3>Practice targeted examples</h3>
+            </article>
+
+            <article class="step">
+              <div class="step-number">5</div>
+              <h3>Assign short, focused homework</h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="consult">
+        <div class="container">
+          <div class="consult">
+            <div>
+              <p class="section-kicker">Free Consultation</p>
+              <h2>Not sure where to start?</h2>
+              <p class="intro">
+                Book a free consultation and we can talk through your goals, test timeline,
+                current strengths, and which tutoring format would be the best fit.
+              </p>
+              <a class="button button-primary" href="https://cal.com/suhani-gagrani-vmllz4" target="_blank" rel="noreferrer">
+                Book a Free Consultation →
+              </a>
+            </div>
+
+            <div class="contact-card">
+              <h3>Contact Suhani</h3>
+              <p>ACT, SAT & PSAT Tutoring</p>
+
+              <div class="contact-list">
+                <a href="tel:7372961348">📞 737-296-1348</a>
+                <a href="mailto:suhanigagrani1@gmail.com">✉️ suhanigagrani1@gmail.com</a>
+                <span>💻 Online tutoring available</span>
+              </div>
+
+              <a class="button button-primary" href="https://cal.com/suhani-gagrani-vmllz4" target="_blank" rel="noreferrer">
+                Schedule Now →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-</body>
 
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <strong>Suhani Gagrani</strong>
+          <p>ACT, SAT & PSAT Tutoring</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="tel:7372961348">Phone</a>
+          <a href="mailto:suhanigagrani1@gmail.com">Email</a>
+          <a href="https://cal.com/suhani-gagrani-vmllz4" target="_blank" rel="noreferrer">Book Consultation</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
 </html>
